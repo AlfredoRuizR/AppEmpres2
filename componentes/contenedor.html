@@ -1,0 +1,72 @@
+<div class="col-xl-4 mb-30">
+          <div class="card card-statistics h-100">
+            <div class="p-4 text-center bg-success">
+               <h5 class="mb-70 text-white">nombre del Libro</h5>
+                <div class="btn-group info-drop">
+                  <button type="button" class="dropdown-toggle-split text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ti-more"></i></button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#"><i class="text-dark ti-pencil-alt"></i>Agregar al Carrito</a>
+                  </div>
+                </div>
+            </div>
+            <div class="card-body text-center">
+              <div class="avatar-top">
+                <img class="img-fluid w-25 rounded-circle " src="principal/images/team/12.jpg" alt="">
+               </div>
+                <div class="social-icons color-icon mt-20">
+                </div>
+               <div class="divider mt-10"></div>
+               <div class="row">
+                  <div class="col-6 col-sm-4 xs-mb-10 mt-20">
+                     <b>Cantidad</b>
+                     <h4 class="text-success mt-10">09</h4>
+                  </div>
+                  <div class="col-6 col-sm-4 xs-mb-10 mt-20">
+                    <b>Autor</b>
+                     <h4 class="text-danger mt-10">255</h4>
+                  </div>
+                  <div class="col-12 col-sm-4 xs-mt-10 mt-20">
+                    <b>Editorial</b>
+                     <h4 class="text-warning mt-10">608</h4>
+                  </div>
+                </div>
+               	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+		<fieldset>
+			<input type="hidden" name="cmd" value="_cart" />
+			<input type="hidden" name="add" value="1" />
+			<input type="hidden" name="business" value="example@minicartjs.com" />
+			<input type="hidden" name="item_name" value="Test Product" />
+			<input type="hidden" name="quantity" value="1" />
+			<input type="hidden" name="amount" value="1.00" />
+			<input type="hidden" name="currency_code" value="USD" />
+			<input type="submit" name="submit" value="Agregar al carrito" class="button large"/>
+		</fieldset>
+                    	</form>
+                    <script src="Carrito/dist/minicart.js"></script>
+                    <script>
+		paypal.minicart.render();
+
+		paypal.minicart.cart.on('checkout', function (evt) {
+			var items = this.items(),
+				len = items.length,
+				total = 0,
+				i;
+
+			// Count the number of each item in the cart
+			for (i = 0; i < len; i++) {
+				total += items[i].get('quantity');
+			}
+
+			if (total < 3) {
+				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+				evt.preventDefault();
+			}
+		});
+
+	</script>
+
+            
+            </div>
+          </div>
+        </div>
+      
